@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceDemo Test Suite" parallel="tests" thread-count="2">
+    <test name="Cart Tests" >
+        <groups>
+            <run>
+                <exclude name="dataProvider"></exclude>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.CartTests" >
+                <methods>
+                    <exclude name="addProductToCartTest"/>
+                    <exclude name="removeOneOfProductsFromCartTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceDemo Test Suite" >
+    <test name="CartTests">
+        <!--<groups>
+            <run>
+                <include name="Smoke Test" />
+            </run>
+        </groups>-->
+        <classes>
+            <class name="tests.CartTests" />
+        </classes>
+    </test>
+    <test name="ProductsTests">
+        <classes>
+            <class name="tests.ProductsTests" />
+        </classes>
+    </test>
+</suite>
