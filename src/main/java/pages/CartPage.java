@@ -36,7 +36,7 @@ public class CartPage extends HeaderPage implements IConstants {
      */
     public void removeProductFromCart(String productName) {
         driver.findElement(By.xpath(String.format(PRODUCT_REMOVE, productName))).click();
-        log.info(String.format("Product %s successfully removed from cart", productName));
+        log.info(String.format("Remove %s product from cart", productName));
     }
 
     /**
@@ -46,7 +46,7 @@ public class CartPage extends HeaderPage implements IConstants {
      */
     public String getProductPrice(String productName){
         String productPrice = driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
-        log.info(String.format("Get product %s price = %s", productName, productPrice));
+        log.info(String.format("Get price for product: %s. Price: %s", productName, productPrice));
         return productPrice;
     }
 

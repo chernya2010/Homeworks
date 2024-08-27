@@ -9,4 +9,5 @@ import lombok.*;
 public class Car {
     private String mark;
     private String speed;
+    private String colour;
 }

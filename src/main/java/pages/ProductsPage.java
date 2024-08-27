@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Log4j2
 public class ProductsPage extends HeaderPage {
@@ -73,7 +75,7 @@ public class ProductsPage extends HeaderPage {
      * @return String 'price of the product'
      */
     public String getProductPrice(String productName) {
-        log.info(String.format("Get price for product %s", productName));
+        log.info(String.format("Get price for product: %s", productName));
         return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
     }
 }

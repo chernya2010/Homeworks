@@ -37,7 +37,7 @@ public class LoginPage extends BasePage implements IConstants {
     @Step("Open Login Page")
     public LoginPage openPage() {
         driver.get(LOGIN_PAGE_URL);
-        log.info("Open Login Page URL " + LOGIN_PAGE_URL);
+        log.info("Open Login Page URL: " + CART_PAGE_URL);
         return this;
     }
 
@@ -51,7 +51,7 @@ public class LoginPage extends BasePage implements IConstants {
         usernameInput.sendKeys(username);
         log.info(String.format("Fill in username field with '%s'", username));
         passwordInput.sendKeys(password);
-        log.info("Click on Login button");
+        log.info("Click on login button");
         loginButton.click();
         return new ProductsPage(driver);
     }
@@ -62,7 +62,7 @@ public class LoginPage extends BasePage implements IConstants {
      * @return the error message text
      */
     public String getErrorMessageText() {
-        log.info(String.format("Get an error message %s", errorMessage.getText()));
+        log.info(String.format("Get an error message: %s", errorMessage.getText()));
         return errorMessage.getText();
     }
 
