@@ -9,14 +9,14 @@ pipeline {
         cron('0 8 * * *')
     }
     parameters {
-        gitParameter branchFilter: '(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: 'master/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
    stages {
       stage('Testing') {
          steps {
             // Get some code from a GitHub repository
-            git branch: "${params.BRANCH}", url: 'https://github.com/chernya2010/Homeworks.git'
+            git branch: "${params.BRANCH}", url: 'https://github.com/ashevtsova8/SauceDemoTestFramework.git'
 
             // Run Maven on a Unix agent.
             // sh "mvn clean test"
