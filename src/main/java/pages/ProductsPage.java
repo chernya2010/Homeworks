@@ -1,9 +1,11 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class ProductsPage extends HeaderPage {
     public static final By PRODUCTS = By.xpath("//*[@data-test='title']");
     public static final String PRODUCT_ITEM = "//*[text()='%s']/ancestor::*[@class" +
@@ -40,6 +42,7 @@ public class ProductsPage extends HeaderPage {
      */
     @Step("Add product: {productName} to Cart")
     public ProductsPage addProductToCart(String productName) {
+        log.info(String.format("Add product %s to cart", productName));
         driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).click();
         return this;
     }
@@ -70,6 +73,7 @@ public class ProductsPage extends HeaderPage {
      * @return String 'price of the product'
      */
     public String getProductPrice(String productName) {
+        log.info(String.format("Get price for product %s", productName));
         return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
     }
 }

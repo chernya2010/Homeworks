@@ -2,6 +2,7 @@ package pages;
 
 import constants.IConstants;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Log4j2
 public class LoginPage extends BasePage implements IConstants {
     @FindBy(xpath = "//*[@id='user-name']")
     WebElement usernameInput;
@@ -35,6 +37,7 @@ public class LoginPage extends BasePage implements IConstants {
     @Step("Open Login Page")
     public LoginPage openPage() {
         driver.get(LOGIN_PAGE_URL);
+        log.info("Open Login Page URL " + LOGIN_PAGE_URL);
         return this;
     }
 
@@ -46,7 +49,9 @@ public class LoginPage extends BasePage implements IConstants {
      */
     public ProductsPage login(String username, String password) {
         usernameInput.sendKeys(username);
+        log.info(String.format("Fill in username field with '%s'", username));
         passwordInput.sendKeys(password);
+        log.info("Click on Login button");
         loginButton.click();
         return new ProductsPage(driver);
     }
@@ -57,6 +62,7 @@ public class LoginPage extends BasePage implements IConstants {
      * @return the error message text
      */
     public String getErrorMessageText() {
+        log.info(String.format("Get an error message %s", errorMessage.getText()));
         return errorMessage.getText();
     }
 

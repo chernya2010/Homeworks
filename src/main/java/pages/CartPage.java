@@ -2,9 +2,11 @@ package pages;
 
 import constants.IConstants;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class CartPage extends HeaderPage implements IConstants {
     public static final String PRODUCT_ITEM = "//*[text()='%s']/ancestor::*[@class='cart_item']";
     public static final String PRODUCT_PRICE = PRODUCT_ITEM + "//*[@class='inventory_item_price']";
@@ -23,6 +25,7 @@ public class CartPage extends HeaderPage implements IConstants {
     @Step("Opening Cart Page")
     public CartPage openPage() {
         driver.get(CART_PAGE_URL);
+        log.info("Open Cart Page URL " + CART_PAGE_URL);
         return this;
     }
 
@@ -33,6 +36,7 @@ public class CartPage extends HeaderPage implements IConstants {
      */
     public void removeProductFromCart(String productName) {
         driver.findElement(By.xpath(String.format(PRODUCT_REMOVE, productName))).click();
+        log.info(String.format("Product %s successfully removed from cart", productName));
     }
 
     /**
@@ -41,7 +45,9 @@ public class CartPage extends HeaderPage implements IConstants {
      * @return the product price
      */
     public String getProductPrice(String productName){
-        return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        String productPrice = driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        log.info(String.format("Get product %s price = %s", productName, productPrice));
+        return productPrice;
     }
 
     /**
@@ -49,7 +55,9 @@ public class CartPage extends HeaderPage implements IConstants {
      * @return size of webElements list
      */
     public int getProductsCount() {
-        return driver.findElements(By.xpath(PRODUCTS_CONTAINER)).size();
+        int count = driver.findElements(By.xpath(PRODUCTS_CONTAINER)).size();
+        log.info(String.format("Products count: %s", count));
+        return count;
     }
 
     /**
